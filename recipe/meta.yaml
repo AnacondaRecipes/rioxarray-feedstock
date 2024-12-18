@@ -44,7 +44,7 @@ about:
   description: |
     rasterio xarray extension.
   doc_url: https://corteva.github.io/rioxarray
-  dev_url: http://github.com/corteva/rioxarray
+  dev_url: https://github.com/corteva/rioxarray
 
 extra:
   recipe-maintainers:
