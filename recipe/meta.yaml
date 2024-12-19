@@ -11,9 +11,9 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<310]
+  skip: true  # [py<310 and s390x]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
-
+#  s390x is currently unavailable for rasterio so we will skip this platform for now.
 requirements:
   host:
     - python
@@ -37,7 +37,7 @@ test:
     - pip
 
 about:
-  home: http://github.com/corteva/rioxarray
+  home: https://github.com/corteva/rioxarray
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
