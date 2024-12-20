@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<310 and s390x]
+  skip: true  # [py<310 or s390x]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 #  s390x is currently unavailable for rasterio so we will skip this platform for now.
 requirements:
