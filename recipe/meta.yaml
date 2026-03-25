@@ -10,10 +10,9 @@ source:
   sha256: 62bdef2a1ae8ac1de8cd3e809bfe3c8c5d09d1edc873ef9b1f373d37cf8da02b
 
 build:
-  number: 0
-  skip: true  # [py<310 or s390x]
+  number: 1
+  skip: true  # [py<310]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
-#  s390x is currently unavailable for rasterio so we will skip this platform for now.
 requirements:
   host:
     - python
