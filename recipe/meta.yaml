@@ -33,19 +33,13 @@ test:
     - test/
   commands:
     - pip check
-    # Segfault in GDAL via rioxarray._io._load_subdatasets on Apple Silicon (see test_open_multiple_resolution).
-    # - pytest -v test/ -k "not test_open_multiple_resolution"  # [osx and arm64]
-    # - pytest -v test/  # [not (osx and arm64)]
-    - pytest -v test/
+    # Integration tests under test/integration/ hit real files (GeoTIFF, NetCDF, HDF, MODIS,
+    # etc.) and assume a GDAL/rasterio/xarray/PROJ which is quite hard to match versions
+    # since not specified by upstream.
+    - pytest -v test/unit/
   requires:
     - pip
     - pytest >=3.6
-    # NumPy 2 removed np.float; older dask fails at import (see dask/array/numpy_compat.py)
-    - dask >=2024.8
-    - netcdf4
-    # GDAL format plugins for rasterio (must match libgdal from rasterio)
-    - libgdal-hdf5
-    - libgdal-hdf4
 
 about:
   home: https://corteva.github.io/rioxarray
