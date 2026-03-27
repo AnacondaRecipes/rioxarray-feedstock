@@ -33,11 +33,18 @@ test:
     - test/
   commands:
     - pip check
+    # Segfault in GDAL via rioxarray._io._load_subdatasets on Apple Silicon (see test_open_multiple_resolution).
+    # - pytest -v test/ -k "not test_open_multiple_resolution"  # [osx and arm64]
+    # - pytest -v test/  # [not (osx and arm64)]
     - pytest -v test/
   requires:
     - pip
     - pytest >=3.6
     - dask
+    - netcdf4
+    # GDAL format plugins for rasterio (must match libgdal from rasterio)
+    - libgdal-hdf5
+    - libgdal-hdf4
 
 about:
   home: https://corteva.github.io/rioxarray
