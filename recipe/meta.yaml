@@ -40,7 +40,8 @@ test:
   requires:
     - pip
     - pytest >=3.6
-    - dask
+    # NumPy 2 removed np.float; older dask fails at import (see dask/array/numpy_compat.py)
+    - dask >=2024.8
     - netcdf4
     # GDAL format plugins for rasterio (must match libgdal from rasterio)
     - libgdal-hdf5
